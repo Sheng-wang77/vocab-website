@@ -1,289 +1,295 @@
-/* 全局样式 */
+/* 全局变量定义 */
+:root {
+    --primary-blue: #4A90E2;
+    --secondary-blue: #7EB3FF;
+    --accent-blue: #B8D8FF;
+    --background: #F8FBFF;
+    --card-bg: #FFFFFF;
+    --text-dark: #2D4059;
+    --text-light: #707070;
+    --radius-xl: 24px;
+    --radius-lg: 18px;
+    --shadow: 0 8px 24px rgba(72, 142, 232, 0.1);
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 基础重置与优化 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    font-family: 'Nunito Sans', 'Microsoft YaHei', system-ui;
     line-height: 1.6;
-    color: #3a3a3a;
-    background-color: #f8f9e9; /* 淡黄绿背景 */
+    color: var(--text-dark);
+    background: var(--background);
+    overflow-x: hidden;
 }
 
+/* 容器与布局优化 */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
 }
 
-/* 标题样式 */
+/* 新版头部样式 */
 header {
     text-align: center;
-    margin-bottom: 30px;
-    padding: 25px;
-    background-color: #fff;
-    border-radius: 20px; /* 更圆润的边角 */
-    box-shadow: 0 4px 15px rgba(152, 175, 79, 0.15); /* 柔和绿色阴影 */
+    margin: 30px 0;
+    padding: 32px;
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    animation: slideDown 0.6s ease;
+}
+
+.header-icon {
+    width: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 6px rgba(74, 144, 226, 0.15));
 }
 
 header h1 {
-    color: #5c8d23; /* 深绿色标题 */
-    margin-bottom: 10px;
+    color: var(--primary-blue);
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
 }
 
 header p {
-    color: #8cae5b; /* 中绿色副标题 */
+    color: var(--secondary-blue);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* 主要内容区样式 */
+/* 主内容区升级 */
 main {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 25px; /* 增加间距 */
+    gap: 30px;
+    padding: 20px 0;
 }
 
 @media (min-width: 768px) {
     main {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .practice-area {
-        grid-column: 1 / -1;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
 }
 
-section {
-    background-color: #fff;
-    border-radius: 20px; /* 更圆润的边角 */
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(152, 175, 79, 0.15); /* 柔和绿色阴影 */
+/* 卡片通用样式 */
+.card-style {
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
 }
 
-section h2 {
-    color: #5c8d23; /* 深绿色标题 */
-    margin-bottom: 15px;
-    border-bottom: 2px solid #b4d455; /* 黄绿色边框 */
-    padding-bottom: 8px;
+.card-style:hover {
+    transform: translateY(-5px);
 }
 
-/* 单词卡片样式 */
-.card {
-    border: 1px solid #e5efc1; /* 淡黄绿色边框 */
-    border-radius: 18px; /* 更圆润的边角 */
-    overflow: hidden;
+/* 单词卡片升级 */
+.word-card {
+    composes: card-style;
+    border-left: 6px solid var(--primary-blue);
 }
 
 .word-header {
-    background-color: #9ec46f; /* 黄绿色头部 */
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     color: white;
-    padding: 18px;
-    text-align: center;
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    margin: -28px -28px 28px;
 }
 
 .word-header h3 {
-    font-size: 24px;
-    margin-bottom: 5px;
-}
-
-.word-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-@media (min-width: 576px) {
-    .word-content {
-        flex-direction: row;
-    }
+    font-size: 28px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .word-image {
-    margin-bottom: 15px;
-    text-align: center;
+    flex: 0 0 180px;
+    margin-right: 25px;
+    position: relative;
 }
 
-@media (min-width: 576px) {
-    .word-image {
-        margin-right: 15px;
-        margin-bottom: 0;
-    }
+.word-image::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--accent-blue);
+    border-radius: var(--radius-lg);
+    top: 8px;
+    left: 8px;
+    z-index: -1;
 }
 
 .word-image img {
-    max-width: 100%;
-    border-radius: 12px; /* 更圆润的图片 */
-    border: 2px solid #e5efc1; /* 淡黄绿色边框 */
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    height: 180px;
+    width: 100%;
 }
 
-.word-details p {
-    margin-bottom: 12px;
-}
-
-/* 句子分析样式 */
-.sentence-card {
-    border: 1px solid #e5efc1; /* 淡黄绿色边框 */
-    border-radius: 18px; /* 更圆润的边角 */
-    padding: 18px;
-}
-
-#exampleSentence {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #4a7419; /* 深绿色文字 */
-}
-
-#sentenceTranslation {
-    font-size: 16px;
-    color: #8cae5b; /* 中绿色文字 */
-    margin-bottom: 15px;
-}
-
-.analysis-tools {
-    margin-top: 15px;
-}
-
-/* 练习区样式 */
-.practice-card {
-    border: 1px solid #e5efc1; /* 淡黄绿色边框 */
-    border-radius: 18px; /* 更圆润的边角 */
-    overflow: hidden;
-}
-
+/* 交互式练习区 */
 .practice-tabs {
     display: flex;
-    background-color: #f3f7e0; /* 非常淡的黄绿色背景 */
+    gap: 8px;
+    background: var(--accent-blue);
+    padding: 8px;
+    border-radius: var(--radius-lg);
 }
 
 .tab-btn {
     flex: 1;
-    padding: 12px;
-    text-align: center;
-    border: none;
-    background: none;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    font-weight: 500;
-    border-radius: 0; /* 重置边角 */
-}
-
-.tab-btn:hover {
-    background-color: #d9e8a3; /* 淡黄绿色悬停 */
+    padding: 14px;
+    border-radius: 14px !important;
+    background: transparent;
+    color: var(--text-dark);
 }
 
 .tab-btn.active {
-    background-color: #9ec46f; /* 黄绿色激活状态 */
+    background: var(--primary-blue);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+}
+
+/* 进度动画 */
+@keyframes progress-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    margin: 0 4px;
+    animation: progress-pulse 1.6s infinite;
+}
+
+/* 按钮系统升级 */
+.button-system {
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button-system svg {
+    width: 20px;
+    height: 20px;
+}
+
+.primary-btn {
+    background: var(--primary-blue);
     color: white;
 }
 
-.tab-content {
-    padding: 20px;
+.primary-btn:hover {
+    background: #357ABD;
+    transform: translateY(-2px);
 }
 
-.tab-pane {
-    display: none;
+/* 加载动画 */
+.loading-bounce {
+    animation: bounce 1.2s infinite;
 }
 
-.tab-pane.active {
-    display: block;
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-.practice-prompt {
-    font-size: 18px;
-    margin: 15px 0;
-    font-weight: bold;
-    color: #4a7419; /* 深绿色文字 */
+/* 语音按钮特效 */
+.voice-button {
+    position: relative;
+    padding-left: 48px;
 }
 
-input[type="text"], textarea {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 12px;
-    border: 2px solid #d9e8a3; /* 淡黄绿色边框 */
-    border-radius: 12px; /* 圆润输入框 */
-    font-size: 15px;
-    transition: border-color 0.3s;
+.voice-button::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: url('data:image/svg+xml;utf8,<svg ... />') no-repeat; /* 语音图标SVG */
 }
 
-input[type="text"]:focus, textarea:focus {
-    border-color: #9ec46f; /* 聚焦时边框颜色 */
-    outline: none;
-    box-shadow: 0 0 5px rgba(158, 196, 111, 0.4); /* 聚焦时的柔和阴影 */
+/* 响应式优化 */
+@media (max-width: 576px) {
+    .word-content {
+        flex-direction: column;
+    }
+    
+    .word-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
 }
 
-button {
-    padding: 10px 18px;
-    background-color: #9ec46f; /* 黄绿色按钮 */
-    color: white;
-    border: none;
-    border-radius: 12px; /* 圆润按钮 */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    font-weight: 500;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-button:hover {
-    background-color: #8ab655; /* 深一点的黄绿色 */
-    transform: translateY(-2px); /* 轻微上浮效果 */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-button:active {
-    transform: translateY(0); /* 点击恢复位置 */
-}
-
-.options {
+/* 新增成就系统样式 */
+.achievement-badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #FF6B6B;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 15px 0;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
-.option-btn {
-    flex: 1;
-    min-width: 100px;
+/* 3D翻转特效 */
+.flip-card {
+    perspective: 1000px;
 }
 
-/* 其他样式 */
-.hidden {
-    display: none;
+.flip-card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
-#analysisResult {
-    margin-top: 15px;
-    padding: 15px;
-    background-color: #f3f7e0; /* 非常淡的黄绿色背景 */
-    border-radius: 12px; /* 圆润边角 */
-    border: 1px solid #e5efc1; /* 淡黄绿色边框 */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(10deg);
 }
 
-#analysisResult p {
-    margin-bottom: 8px;
-    color: #4a7419; /* 深绿色文字 */
+/* 页面入场动画 */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* 优化后的页脚 */
 footer {
-    text-align: center;
-    margin-top: 35px;
-    padding: 20px;
-    color: #8cae5b; /* 中绿色文字 */
-    font-size: 14px;
+    margin-top: 60px;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
 }
-
-/* 导航按钮样式 */
-.word-navigation {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.word-navigation button {
-    background-color: #b4d455; /* 亮黄绿色按钮 */
-    padding: 10px 20px;
-}
-
-.word-navigation button:hover {
-    background-color: #9ec46f; /* 悬停时变为普通黄绿色 */
 } 
