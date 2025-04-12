@@ -3,96 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>单词学习网站</title>
+    <title>LexiMaster 六级词汇精研</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>单词学习网站</h1>
-            <p>基于深度加工和间隔重复原理的词汇学习平台</p>
+        <header class="main-header">
+            <h1>LexiMaster 六级词汇精研</h1>
+            <div class="progress-bar">
+                <div class="progress" style="width: 35%"></div>
+                <span>已掌握 857/2500 词</span>
+            </div>
         </header>
 
-        <main>
-            <section class="word-card">
-                <h2>单词卡片</h2>
-                <div class="card">
-                    <div class="word-header">
+        <section class="word-card">
+            <h2><img src="book-icon.svg" alt=""> 核心词汇精讲</h2>
+            <div class="card">
+                <div class="word-header">
+                    <div>
                         <h3 id="currentWord">example</h3>
                         <p id="phonetic">/ɪɡˈzæmpl/</p>
                     </div>
-                    <div class="word-content">
-                        <div class="word-image">
-                            <img src="https://via.placeholder.com/200" alt="单词图片" id="wordImage">
-                        </div>
-                        <div class="word-details">
-                            <p><strong>词根解析：</strong> <span id="etymology">ex (out) + ample (sample)</span></p>
-                            <p><strong>英文释义：</strong> <span id="englishDefinition">a thing characteristic of its kind or illustrating a general rule</span></p>
-                            <p><strong>中文翻译：</strong> <span id="chineseTranslation">例子，范例</span></p>
-                        </div>
+                    <div class="word-meta">
+                        <span id="levelBadge" class="badge">基础</span>
+                        <span id="categoryBadge" class="badge">日常用语</span>
                     </div>
                 </div>
-            </section>
-
-            <section class="sentence-analysis">
-                <h2>句子分析</h2>
-                <div class="sentence-card">
-                    <p id="exampleSentence">This is an example of how to use the word in a sentence.</p>
-                    <p id="sentenceTranslation">这是一个如何在句子中使用该单词的例子。</p>
-                    <div class="analysis-tools">
-                        <button id="analyzeBtn">分析句子结构</button>
-                        <div id="analysisResult" class="hidden">
-                            <p>主语: This</p>
-                            <p>谓语: is</p>
-                            <p>宾语: an example of how to use the word in a sentence</p>
-                        </div>
+                <div class="word-content">
+                    <div class="word-image">
+                        <img src="https://via.placeholder.com/200" alt="单词图片" id="wordImage">
+                    </div>
+                    <div class="word-details">
+                        <p><strong>词根解析：</strong> <span id="etymology">ex (out) + ample (sample)</span></p>
+                        <p><strong>英文释义：</strong> <span id="englishDefinition">a thing characteristic of its kind or illustrating a general rule</span></p>
+                        <p><strong>中文翻译：</strong> <span id="chineseTranslation">例子，范例</span></p>
                     </div>
                 </div>
-            </section>
+                <div class="word-navigation">
+                    <button class="nav-btn">← 上一个</button>
+                    <button class="nav-btn">下一个 →</button>
+                </div>
+            </div>
+        </section>
 
-            <section class="practice-area">
-                <h2>练习区</h2>
-                <div class="practice-card">
-                    <div class="practice-tabs">
-                        <button class="tab-btn active" data-tab="recall">回忆练习</button>
-                        <button class="tab-btn" data-tab="context">语境应用</button>
-                        <button class="tab-btn" data-tab="sentence">造句练习</button>
-                    </div>
-                    <div class="tab-content">
-                        <div id="recall" class="tab-pane active">
-                            <p>看到以下中文，请回忆对应的英文单词：</p>
-                            <p class="practice-prompt">例子，范例</p>
-                            <input type="text" id="recallInput" placeholder="请输入单词...">
-                            <button id="checkRecallBtn">检查</button>
-                            <p id="recallResult" class="hidden"></p>
-                        </div>
-                        <div id="context" class="tab-pane hidden">
-                            <p>请选择正确的单词填入句子：</p>
-                            <p class="practice-prompt">This is a good _____ of the writing style.</p>
-                            <div class="options">
-                                <button class="option-btn">sample</button>
-                                <button class="option-btn">example</button>
-                                <button class="option-btn">case</button>
-                                <button class="option-btn">instance</button>
-                            </div>
-                            <p id="contextResult" class="hidden"></p>
-                        </div>
-                        <div id="sentence" class="tab-pane hidden">
-                            <p>请使用当前单词造一个句子：</p>
-                            <textarea id="sentenceInput" placeholder="请输入你的句子..."></textarea>
-                            <button id="checkSentenceBtn">检查</button>
-                            <p id="sentenceResult" class="hidden"></p>
-                        </div>
+        <section class="test-simulation">
+            <h2><img src="exam-icon.svg" alt=""> 真题模拟训练</h2>
+            <div class="exam-card">
+                <div class="question-header">
+                    <span class="question-type">完形填空</span>
+                    <span class="difficulty">难度：★★☆</span>
+                </div>
+                <p class="exam-content">The committee has been ______ into the incident for months, but hasn't released its findings yet.</p>
+                <div class="exam-options">
+                    <button class="exam-option">A. investigating</button>
+                    <button class="exam-option correct">B. inquiring</button>
+                    <button class="exam-option">C. exploring</button>
+                    <button class="exam-option">D. searching</button>
+                </div>
+                <div class="analysis-box">
+                    <button class="analysis-toggle">显示解析</button>
+                    <div class="analysis-content">
+                        <p><strong>考点分析：</strong>动词辨析 (CET-6 高频考点)</p>
+                        <p><strong>选项区别：</strong><br>
+                        investigate - 系统调查<br>
+                        inquire - 询问式调查<br>
+                        explore - 探索未知领域<br>
+                        search - 搜寻具体物品</p>
+                        <p><strong>真题出现：</strong>2021年6月第三套第43题</p>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <footer>
-            <p>基于深度加工理论的词汇学习网站 &copy; 2025</p>
-        </footer>
+        <section class="practice-area">
+            <h2><img src="practice-icon.svg" alt=""> 智能练习</h2>
+            <div class="practice-card">
+                <div class="practice-tabs">
+                    <button class="tab-btn active" data-tab="recall">记忆检测</button>
+                    <button class="tab-btn" data-tab="context">语境应用</button>
+                    <button class="tab-btn" data-tab="sentence">造句工坊</button>
+                </div>
+                <div class="tab-content">
+                    <div id="recall" class="tab-pane active">
+                        <p>根据中文回忆英文单词：</p>
+                        <p class="practice-prompt">例子，范例</p>
+                        <div class="input-group">
+                            <input type="text" id="recallInput" placeholder="输入你的答案...">
+                            <button id="checkRecallBtn" class="check-btn">✓</button>
+                        </div>
+                        <p id="recallResult" class="result-text hidden"></p>
+                    </div>
+                    <div id="context" class="tab-pane hidden">
+                        <p>选择正确的单词填空：</p>
+                        <p class="practice-prompt">This is a good _____ of the writing style.</p>
+                        <div class="options">
+                            <button class="option-btn">sample</button>
+                            <button class="option-btn">example</button>
+                            <button class="option-btn">case</button>
+                            <button class="option-btn">instance</button>
+                        </div>
+                        <p id="contextResult" class="result-text hidden"></p>
+                    </div>
+                    <div id="sentence" class="tab-pane hidden">
+                        <p>用当前单词造句：</p>
+                        <div class="input-group">
+                            <textarea id="sentenceInput" placeholder="写下你的句子..."></textarea>
+                            <button id="checkSentenceBtn" class="check-btn">✓</button>
+                        </div>
+                        <p id="sentenceResult" class="result-text hidden"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
